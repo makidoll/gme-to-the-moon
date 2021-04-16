@@ -1,6 +1,6 @@
 {
 	"name": "gme-to-the-moon",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"scripts": {
 		"start": "npm run proto && parcel watch src/background.ts",
 		"build": "npm run proto && parcel build src/background.ts",
