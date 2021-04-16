@@ -29,6 +29,12 @@ const setIcon = (filename: string) => {
 	});
 };
 
+const makeLoading = () => {
+	setText("...");
+	setColor("#607d8b");
+	setIcon("rocket-up.png");
+};
+
 const connectToYahoo = () => {
 	const socket = new WebSocket("wss://streamer.finance.yahoo.com");
 
@@ -53,12 +59,12 @@ const connectToYahoo = () => {
 	};
 
 	socket.onclose = () => {
-		setText("");
-		setIcon("rocket-up.png");
+		makeLoading();
 		setTimeout(() => {
 			connectToYahoo();
 		}, 5000);
 	};
 };
 
+makeLoading();
 connectToYahoo();
