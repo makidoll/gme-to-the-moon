@@ -1,4 +1,4 @@
-# GME Ticker
+# GME to the moon
 
 ## Develop
 
@@ -16,7 +16,3 @@ yarn
 yarn build
 yarn package
 ```
-
-If you want to sign for Firefox run
-
-`yarn web-ext sign --api-key= --api-secret=`
