@@ -1,13 +1,21 @@
 import Pbf from "pbf";
 import { yaticker } from "./yaticker";
 
-browser.browserAction.setBadgeTextColor({
-	color: "#fff",
-});
+const isChrome = window.browser == null;
+if (window.browser == null) {
+	window.browser = (window as any).chrome;
+}
+
+if (!isChrome) {
+	browser.browserAction.setBadgeTextColor({
+		color: "#fff",
+	});
+}
 
 let lastText = "";
 const setText = (text: string) => {
 	if (lastText == text) return;
+	lastText = text;
 	browser.browserAction.setBadgeText({
 		text,
 	});
@@ -16,23 +24,33 @@ const setText = (text: string) => {
 let lastColor = "";
 const setColor = (color: string) => {
 	if (lastColor == color) return;
+	lastColor = color;
 	browser.browserAction.setBadgeBackgroundColor({
 		color,
 	});
 };
 
-let lastIconFilename = "";
-const setIcon = (filename: string) => {
-	if (lastIconFilename == filename) return;
+let lastIconUp: boolean = null;
+const setIconUp = (up: boolean) => {
+	if (lastIconUp == up) return;
+	lastIconUp = up;
+
+	// looks better flipped in firefox
+	const deg = isChrome ? (up ? 0 : 180) : up ? 270 : 90;
+
 	browser.browserAction.setIcon({
-		path: "icons/" + filename,
+		path: {
+			"16": "icons/rocket-" + deg + "deg-16px.png",
+			"32": "icons/rocket-" + deg + "deg-32px.png",
+			"320": "icons/rocket-" + deg + "deg-320px.png",
+		},
 	});
 };
 
 const makeLoading = () => {
 	setText("...");
 	setColor("#607d8b");
-	setIcon("rocket-up.png");
+	setIconUp(true);
 };
 
 const connectToYahoo = () => {
@@ -55,7 +73,7 @@ const connectToYahoo = () => {
 
 		setText(String(Math.floor(price)));
 		setColor(tendieManComing ? "#4caf50" : "#f44336");
-		setIcon(tendieManComing ? "rocket-up.png" : "rocket-down.png");
+		setIconUp(tendieManComing);
 	};
 
 	socket.onclose = () => {

@@ -5,10 +5,16 @@
 	"description": "Conveniently shows the price of GME on your toolbar",
 	"homepage_url": "https://github.com/makitsune/gme-to-the-moon",
 	"icons": {
-		"320": "icons/rocket-up.png"
+		"16": "icons/rocket-0deg-16px.png",
+		"32": "icons/rocket-0deg-32px.png",
+		"320": "icons/rocket-0deg-320px.png"
 	},
 	"browser_action": {
-		"default_icon": "icons/rocket-up.png"
+		"default_icon": {
+			"16": "icons/rocket-0deg-16px.png",
+			"32": "icons/rocket-0deg-32px.png",
+			"320": "icons/rocket-0deg-320px.png"
+		}
 	},
 	"background": {
 		"scripts": ["dist/background.js"],
