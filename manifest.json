@@ -23,7 +23,7 @@
 	"permissions": ["https://finance.yahoo.com/quote/GME/"],
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "gme-to-the-moon@maki.cafe"
+			"id": "{d2417234-da94-4651-b3b7-ead3cc36382d}"
 		}
 	}
 }
