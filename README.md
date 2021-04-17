@@ -6,12 +6,12 @@
 		<th>Firefox</th>
 	</tr>
 	<tr>
-		<td style="vertical-align: top">
+		<td>
 			<img src="screenshots/chrome.png" />
 			<br />
 			<i>Available soon...</i>
 		</td>
-		<td style="vertical-align: top">
+		<td>
 			<img src="screenshots/firefox.png" />
 			<br />
 			<a
@@ -30,7 +30,9 @@ yarn
 yarn start
 ```
 
-Use [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug) with VS Code and Run and Debug
+-   Use [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug) with VS Code and Run and Debug
+
+-   Use [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) with VS Code and Run and Debug. Note that you need to refresh and see logs (background page) in `chrome://extensions` instead
 
 ## Build
 
