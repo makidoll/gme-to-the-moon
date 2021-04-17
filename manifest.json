@@ -19,5 +19,6 @@
 	"background": {
 		"scripts": ["dist/background.js"],
 		"persistent": true
-	}
+	},
+	"permissions": ["https://finance.yahoo.com/quote/GME/"]
 }

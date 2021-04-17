@@ -53,12 +53,39 @@ const makeLoading = () => {
 	setIconUp(true);
 };
 
+let lastPrice = 0;
+const setPrice = (price: number) => {
+	const tendieManComing = price >= lastPrice;
+	lastPrice = price;
+
+	setText(String(Math.floor(price))); // cant fit more :(
+	setColor(tendieManComing ? "#4caf50" : "#f44336");
+	setIconUp(tendieManComing);
+};
+
+const updateWithCurrentPrice = async () => {
+	const req = await fetch("https://finance.yahoo.com/quote/GME/");
+	const html = await req.text();
+
+	const matches = html.match(/root\.App\.main = ({[^]+?});\n/i);
+	if (matches == null) return;
+	if (matches.length < 2) return;
+
+	const data = JSON.parse(matches[1]);
+	const price =
+		data?.context?.dispatcher?.stores?.StreamDataStore?.quoteData?.GME
+			?.regularMarketPrice?.raw;
+	if (price == null) return;
+
+	console.log("Manually fetched from Yahoo Finance");
+	setPrice(price);
+};
+
 const connectToYahoo = () => {
 	const socket = new WebSocket("wss://streamer.finance.yahoo.com");
 
-	let lastPrice = 0;
-
 	socket.onopen = () => {
+		console.log("Connected to Yahoo Finance");
 		socket.send(JSON.stringify({ subscribe: ["GME"] }));
 	};
 
@@ -67,17 +94,13 @@ const connectToYahoo = () => {
 		const pbf = new Pbf(raw);
 		const { id, price } = yaticker.read(pbf);
 		if (id != "GME") return;
-
-		const tendieManComing = price >= lastPrice;
-		lastPrice = price;
-
-		setText(String(Math.floor(price)));
-		setColor(tendieManComing ? "#4caf50" : "#f44336");
-		setIconUp(tendieManComing);
+		setPrice(price);
 	};
 
 	socket.onclose = () => {
-		makeLoading();
+		console.log("Disconnected from Yahoo Finance");
+		// makeLoading();
+		updateWithCurrentPrice();
 		setTimeout(() => {
 			connectToYahoo();
 		}, 5000);
@@ -85,4 +108,7 @@ const connectToYahoo = () => {
 };
 
 makeLoading();
+
+updateWithCurrentPrice();
+
 connectToYahoo();
