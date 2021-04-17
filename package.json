@@ -3,10 +3,9 @@
 	"version": "1.2.0",
 	"scripts": {
 		"start": "npm run proto && parcel watch --no-hmr src/background.ts",
-		"build": "npm run proto && parcel build src/background.ts",
+		"build": "npm run proto && parcel build --no-source-maps src/background.ts",
 		"proto": "pbf yaticker.proto > src/yaticker.js",
-		"package": "web-ext build",
-		"web-ext": "web-ext"
+		"package": "web-ext build -i * !manifest.json !dist !icons"
 	},
 	"dependencies": {
 		"pbf": "^3.2.1"
