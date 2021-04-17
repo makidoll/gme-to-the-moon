@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "GME to the moon",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"description": "Conveniently shows the price of GME on your toolbar",
 	"homepage_url": "https://github.com/makitsune/gme-to-the-moon",
 	"icons": {
