@@ -2,12 +2,19 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch WebExtension",
+			"name": "Launch Firefox",
 			"type": "firefox",
 			"request": "launch",
 			"reAttach": true,
 			"addonPath": "${workspaceFolder}",
 			"firefoxExecutable": "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+		},
+		{
+			"name": "Launch Chrome",
+			"type": "chrome",
+			"request": "launch",
+			"runtimeArgs": ["--load-extension=${workspaceFolder}"],
+			"runtimeExecutable": "C:\\Program Files\\Google\\Chrome Dev\\Application\\chrome.exe"
 		}
 	]
 }
