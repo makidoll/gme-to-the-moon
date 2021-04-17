@@ -2,7 +2,7 @@
 	"name": "gme-to-the-moon",
 	"version": "1.2.0",
 	"scripts": {
-		"start": "npm run proto && parcel watch src/background.ts",
+		"start": "npm run proto && parcel watch --no-hmr src/background.ts",
 		"build": "npm run proto && parcel build src/background.ts",
 		"proto": "pbf yaticker.proto > src/yaticker.js",
 		"package": "web-ext build",
