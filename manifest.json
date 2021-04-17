@@ -20,5 +20,10 @@
 		"scripts": ["dist/background.js"],
 		"persistent": true
 	},
-	"permissions": ["https://finance.yahoo.com/quote/GME/"]
+	"permissions": ["https://finance.yahoo.com/quote/GME/"],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "gme-to-the-moon@maki.cafe"
+		}
+	}
 }
