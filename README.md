@@ -1,6 +1,6 @@
 # GME to the moon
 
-![asd](screenshots/firefox.png)
+![](screenshots/firefox.png)
 
 Available on [Chrome](https://chrome.google.com/webstore/detail/gme-to-the-moon/hnmnjoeblnfcgfoongbfjfedjmmodamd) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon)
 
