@@ -1,27 +1,8 @@
 # GME to the moon
 
-<table>
-	<tr>
-		<th>Chrome</th>
-		<th>Firefox</th>
-	</tr>
-	<tr>
-		<td>
-			<img src="screenshots/chrome.png" />
-			<br />
-			<i>Available soon...</i>
-		</td>
-		<td>
-			<img src="screenshots/firefox.png" />
-			<br />
-			<a
-				href="https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon/"
-			>
-				https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon/
-			</a>
-		</td>
-	</tr>
-</table>
+![asd](screenshots/firefox.png)
+
+Available on [Chrome](https://schrome.google.com/webstore/detail/gme-to-the-moon/hnmnjoeblnfcgfoongbfjfedjmmodamd) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon)
 
 ## Develop
 
