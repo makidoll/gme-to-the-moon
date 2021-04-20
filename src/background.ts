@@ -54,12 +54,22 @@ const makeLoading = () => {
 	setIconUp(true);
 };
 
+const formatNumber = (n: number) => {
+	// return new Intl.NumberFormat("en-US", {
+	// 	style: "currency",
+	// 	currency: "USD",
+	// })
+	// 	.format(n)
+	// 	.replace(/^\$/, "");
+	return n.toFixed(2);
+};
+
 let lastPrice = 0;
 const setPrice = (price: number) => {
 	const tendieManComing = price >= lastPrice;
 	lastPrice = price;
 
-	setText(String(Math.floor(price))); // cant fit more :(
+	setText(formatNumber(price));
 	setColor(tendieManComing ? "#4caf50" : "#f44336");
 	setIconUp(tendieManComing);
 };
