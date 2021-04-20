@@ -37,12 +37,13 @@ const setIconUp = (up: boolean) => {
 
 	// looks better flipped in firefox
 	const deg = isChrome ? (up ? 0 : 180) : up ? 270 : 90;
+	const path = "icons/rocket-" + deg + "deg-";
 
 	browser.browserAction.setIcon({
 		path: {
-			"16": "icons/rocket-" + deg + "deg-16px.png",
-			"32": "icons/rocket-" + deg + "deg-32px.png",
-			"320": "icons/rocket-" + deg + "deg-320px.png",
+			"16": path + "16px.png",
+			"32": path + "32px.png",
+			"320": path + "320px.png",
 		},
 	});
 };
@@ -72,9 +73,11 @@ const updateWithCurrentPrice = async () => {
 	if (matches.length < 2) return;
 
 	const data = JSON.parse(matches[1]);
-	const price =
-		data?.context?.dispatcher?.stores?.StreamDataStore?.quoteData?.GME
-			?.regularMarketPrice?.raw;
+	const GME =
+		data?.context?.dispatcher?.stores?.StreamDataStore?.quoteData?.GME;
+	if (GME == null) return;
+
+	const price = GME?.regularMarketPrice?.raw;
 	if (price == null) return;
 
 	console.log("Manually fetched from Yahoo Finance");
