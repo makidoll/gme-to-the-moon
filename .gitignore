@@ -5,3 +5,4 @@ web-ext-artifacts
 .web-extension-id
 src/yaticker.js
 icons
+.parcel-cache
