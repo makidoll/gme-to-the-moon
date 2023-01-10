@@ -38,6 +38,14 @@ const rocketIcons = {
 	},
 };
 
+// all of these are picked so that the foreground color is white
+// because setBadgeTextColor doesn't exist anymore
+const colors = {
+	red700: "#D32F2F",
+	green800: "#2E7D32",
+	blueGray600: "#546E7A",
+};
+
 const browserAction = browser.action ?? browser.browserAction;
 
 const isFirefox = browser.runtime
@@ -88,7 +96,7 @@ const setIconUp = (up: boolean) => {
 
 const makeLoading = () => {
 	setText("...");
-	setColor("#607d8b");
+	setColor(colors.blueGray600);
 	setIconUp(true);
 };
 
@@ -109,7 +117,7 @@ const setPrice = (price: number) => {
 	lastPrice = price;
 
 	setText(formatNumber(price));
-	setColor(tendieManComing ? "#4caf50" : "#f44336");
+	setColor(tendieManComing ? colors.green800 : colors.red700);
 	setIconUp(tendieManComing);
 };
 
