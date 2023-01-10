@@ -4,6 +4,16 @@
 
 Available on [Chrome](https://chrome.google.com/webstore/detail/gme-to-the-moon/hnmnjoeblnfcgfoongbfjfedjmmodamd) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon)
 
+<p align="left">
+<a href="https://chrome.google.com/webstore/detail/gme-to-the-moon/hnmnjoeblnfcgfoongbfjfedjmmodamd">
+<img height="60" alt="Chrome" src="https://user-images.githubusercontent.com/8362329/211453976-a1e16722-5cb1-4d34-96e0-ed8aeceb635a.png"/>
+</a>
+ ‍ 
+<a href="https://addons.mozilla.org/en-US/firefox/addon/gme-to-the-moon">
+<img height="60" alt="Firefox" src="https://user-images.githubusercontent.com/8362329/211453977-16326fc2-9948-4ffd-98aa-c81382f8e4d0.png"/>
+</a>
+</p>
+
 ## Develop
 
 ```
