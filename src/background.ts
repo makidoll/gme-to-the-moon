@@ -78,6 +78,7 @@ const updateWithCurrentPrice = async () => {
 	const req = await fetch("https://finance.yahoo.com/quote/GME/");
 	const html = await req.text();
 
+	/*
 	const matches = html.match(/root\.App\.main = ({[^]+?});\n/i);
 	if (matches == null) return;
 	if (matches.length < 2) return;
@@ -89,6 +90,16 @@ const updateWithCurrentPrice = async () => {
 
 	const price = GME?.regularMarketPrice?.raw;
 	if (price == null) return;
+	*/
+
+	const matches = html.match(
+		/<fin-streamer[^]+?data-symbol=["']GME["'][^]+?>([^]+?)<\/fin-streamer>/i,
+	);
+	if (matches == null) return;
+	if (matches.length < 2) return;
+
+	const price = Number(matches[1]);
+	if (Number.isNaN(price)) return;
 
 	console.log("Manually fetched from Yahoo Finance");
 	setPrice(price);
