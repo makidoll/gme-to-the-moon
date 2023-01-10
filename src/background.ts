@@ -61,7 +61,8 @@ const formatNumber = (n: number) => {
 	// })
 	// 	.format(n)
 	// 	.replace(/^\$/, "");
-	return n.toFixed(2);
+	// return n.toFixed(2);
+	return String(Math.floor(n));
 };
 
 let lastPrice = 0;
