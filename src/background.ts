@@ -1,22 +1,59 @@
 import Pbf from "pbf";
 import { yaticker } from "./yaticker";
+import browser from "webextension-polyfill";
 
-const isChrome = window.browser == null;
-if (window.browser == null) {
-	window.browser = (window as any).chrome;
-}
+import rocket0deg16px from "./icons/rocket-0deg-16px.png";
+import rocket0deg32px from "./icons/rocket-0deg-32px.png";
+import rocket0deg320px from "./icons/rocket-0deg-320px.png";
+import rocket90deg16px from "./icons/rocket-90deg-16px.png";
+import rocket90deg32px from "./icons/rocket-90deg-32px.png";
+import rocket90deg320px from "./icons/rocket-90deg-320px.png";
+import rocket180deg16px from "./icons/rocket-180deg-16px.png";
+import rocket180deg32px from "./icons/rocket-180deg-32px.png";
+import rocket180deg320px from "./icons/rocket-180deg-320px.png";
+import rocket270deg16px from "./icons/rocket-270deg-16px.png";
+import rocket270deg32px from "./icons/rocket-270deg-32px.png";
+import rocket270deg320px from "./icons/rocket-270deg-320px.png";
 
-if (!isChrome) {
-	browser.browserAction.setBadgeTextColor({
-		color: "#fff",
-	});
-}
+const rocketIcons = {
+	"0": {
+		"16": rocket0deg16px,
+		"32": rocket0deg32px,
+		"320": rocket0deg320px,
+	},
+	"90": {
+		"16": rocket90deg16px,
+		"32": rocket90deg32px,
+		"320": rocket90deg320px,
+	},
+	"180": {
+		"16": rocket180deg16px,
+		"32": rocket180deg32px,
+		"320": rocket180deg320px,
+	},
+	"270": {
+		"16": rocket270deg16px,
+		"32": rocket270deg32px,
+		"320": rocket270deg320px,
+	},
+};
+
+const browserAction = browser.action ?? browser.browserAction;
+
+const isFirefox = browser.runtime
+	.getManifest()
+	.icons?.["16"].startsWith("moz-extension://");
+
+// doesn't exist anymore
+// browserAction.setBadgeTextColor({
+// 	color: "#fff",
+// });
 
 let lastText = "";
 const setText = (text: string) => {
 	if (lastText == text) return;
 	lastText = text;
-	browser.browserAction.setBadgeText({
+	browserAction.setBadgeText({
 		text,
 	});
 };
@@ -25,26 +62,27 @@ let lastColor = "";
 const setColor = (color: string) => {
 	if (lastColor == color) return;
 	lastColor = color;
-	browser.browserAction.setBadgeBackgroundColor({
+	browserAction.setBadgeBackgroundColor({
 		color,
 	});
 };
 
-let lastIconUp: boolean = null;
+let lastIconUp: boolean | null = null;
 const setIconUp = (up: boolean) => {
 	if (lastIconUp == up) return;
 	lastIconUp = up;
 
 	// looks better flipped in firefox
-	const deg = isChrome ? (up ? 0 : 180) : up ? 270 : 90;
-	const path = "icons/rocket-" + deg + "deg-";
+	const deg = isFirefox ? (up ? 270 : 90) : up ? 0 : 180;
+	// const path = "../icons/rocket-" + deg + "deg-";
 
-	browser.browserAction.setIcon({
-		path: {
-			"16": path + "16px.png",
-			"32": path + "32px.png",
-			"320": path + "320px.png",
-		},
+	browserAction.setIcon({
+		// path: {
+		// 	"16": path + "16px.png",
+		// 	"32": path + "32px.png",
+		// 	"320": path + "320px.png",
+		// },
+		path: rocketIcons[deg],
 	});
 };
 

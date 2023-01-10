@@ -1,13 +1,13 @@
-const fs = require("fs");
-const sharp = require("sharp");
+import * as fs from "fs";
+import sharp from "sharp";
 
 const degrees = [0, 90, 180, 270];
 const sizes = [16, 32, 320];
-const exportDir = "icons";
+const exportDir = "src/icons";
 const refIcon = sharp("rocket.png", {});
 
 if (!fs.existsSync(exportDir)) {
-	fs.mkdirSync(exportDir);
+	fs.mkdirSync(exportDir, { recursive: true });
 }
 
 (async () => {

@@ -1,21 +1,36 @@
 {
 	"name": "gme-to-the-moon",
 	"version": "1.2.0",
+	"type": "module",
+	"staticFiles": {
+		"staticPath": "src/icons"
+	},
 	"scripts": {
+		"clean": "rimraf src/yaticker.js src/icons",
 		"proto": "pbf yaticker.proto > src/yaticker.js",
 		"make-icons": "node make-icons.js",
-		"pre": "npm run proto && npm run make-icons",
-		"start": "npm run pre && parcel watch --no-hmr src/background.ts",
-		"build": "npm run pre && parcel build --no-source-maps src/background.ts",
-		"package": "web-ext build -i * !manifest.json !dist !icons"
+		"pre": "npm run clean && npm run proto && npm run make-icons",
+		"pre:chrome": "rimraf dist-chrome && npm run pre",
+		"pre:firefox": "rimraf dist-firefox && npm run pre",
+		"start:chrome": "npm run pre:chrome && parcel watch src/chrome/manifest.json --dist-dir dist/chrome --host localhost --config @parcel/config-webextension",
+		"start:firefox": "npm run pre:firefox && parcel watch src/firefox/manifest.json --dist-dir dist/firefox --host localhost --config @parcel/config-webextension",
+		"build:chrome": "npm run pre:chrome && parcel build src/chrome/manifest.json --dist-dir dist/chrome --config @parcel/config-webextension",
+		"build:firefox": "npm run pre:firefox && parcel build src/firefox/manifest.json --dist-dir dist/firefox --config @parcel/config-webextension",
+		"build": "npm run build:chrome && npm run build:firefox",
+		"package:chrome": "web-ext build -a web-ext-artifacts/chrome -s dist/chrome -n gme-to-the-moon-1.2.0.zip",
+		"package:firefox": "web-ext build -a web-ext-artifacts/firefox -s dist/firefox -n gme-to-the-moon-1.2.0.zip",
+		"package": "npm run package:chrome && npm run package:firefox"
 	},
 	"dependencies": {
-		"pbf": "^3.2.1"
+		"pbf": "^3.2.1",
+		"webextension-polyfill": "^0.10.0"
 	},
 	"devDependencies": {
-		"@types/firefox-webext-browser": "^94.0.1",
+		"@parcel/config-webextension": "^2.8.2",
 		"@types/pbf": "^3.0.2",
+		"@types/webextension-polyfill": "^0.9.2",
 		"parcel": "^2.8.2",
+		"rimraf": "^3.0.2",
 		"sharp": "^0.31.3",
 		"typescript": "^4.9.4",
 		"web-ext": "^7.4.0"

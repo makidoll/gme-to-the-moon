@@ -8,7 +8,8 @@ Available on [Chrome](https://chrome.google.com/webstore/detail/gme-to-the-moon/
 
 ```
 yarn
-yarn start
+yarn start:chrome
+yarn start:firefox
 ```
 
 -   Use [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug) with VS Code and Run and Debug
