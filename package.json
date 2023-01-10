@@ -1,6 +1,6 @@
 {
 	"name": "gme-to-the-moon",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"type": "module",
 	"staticFiles": {
 		"staticPath": "src/icons"
@@ -17,8 +17,8 @@
 		"build:chrome": "npm run pre:chrome && parcel build src/chrome/manifest.json --dist-dir dist/chrome --config @parcel/config-webextension",
 		"build:firefox": "npm run pre:firefox && parcel build src/firefox/manifest.json --dist-dir dist/firefox --config @parcel/config-webextension",
 		"build": "npm run build:chrome && npm run build:firefox",
-		"package:chrome": "web-ext build -a web-ext-artifacts/chrome -s dist/chrome -n gme-to-the-moon-1.2.0.zip",
-		"package:firefox": "web-ext build -a web-ext-artifacts/firefox -s dist/firefox -n gme-to-the-moon-1.2.0.zip",
+		"package:chrome": "web-ext build -a web-ext-artifacts/chrome -s dist/chrome",
+		"package:firefox": "web-ext build -a web-ext-artifacts/firefox -s dist/firefox",
 		"package": "npm run package:chrome && npm run package:firefox"
 	},
 	"dependencies": {
