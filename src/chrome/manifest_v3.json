@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "GME to the moon",
 	"version": "1.3.1",
 	"description": "Conveniently shows the price of GME on your toolbar",
@@ -9,7 +9,7 @@
 		"32": "../icons/rocket-0deg-32px.png",
 		"320": "../icons/rocket-0deg-320px.png"
 	},
-	"browser_action": {
+	"action": {
 		"default_icon": {
 			"16": "../icons/rocket-0deg-16px.png",
 			"32": "../icons/rocket-0deg-32px.png",
@@ -17,8 +17,8 @@
 		}
 	},
 	"background": {
-		"scripts": ["../background.ts"],
-		"persistent": true
+		"service_worker": "../background.ts",
+		"type": "module"
 	},
-	"permissions": ["https://finance.yahoo.com/quote/GME/"]
+	"host_permissions": ["https://finance.yahoo.com/quote/GME/"]
 }

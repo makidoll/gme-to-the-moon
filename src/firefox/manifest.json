@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "GME to the moon",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"description": "Conveniently shows the price of GME on your toolbar",
 	"homepage_url": "https://github.com/makifoxgirl/gme-to-the-moon",
 	"icons": {
@@ -17,7 +17,8 @@
 		}
 	},
 	"background": {
-		"scripts": ["../background.ts"]
+		"scripts": ["../background.ts"],
+		"persistent": true
 	},
 	"permissions": ["https://finance.yahoo.com/quote/GME/"],
 	"browser_specific_settings": {
