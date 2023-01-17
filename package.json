@@ -6,7 +6,7 @@
 		"staticPath": "src/icons"
 	},
 	"scripts": {
-		"clean": "rimraf src/yaticker.js src/icons",
+		"clean": "rimraf src/yaticker.js src/icons dist/",
 		"proto": "pbf yaticker.proto > src/yaticker.js",
 		"make-icons": "node make-icons.js",
 		"pre": "npm run clean && npm run proto && npm run make-icons",
